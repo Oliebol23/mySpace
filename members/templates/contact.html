@@ -1,15 +1,65 @@
  {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-  <title>Contact Me</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;  
+      align-items: center;      
+      background-color: #0a0435;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      color: white;
+      width: 100%;
+      max-width: 400px;  
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #4e6ef2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #364dc7;
+    }
+  </style>
 </head>
-<body>
-  <h1>Contact Me</h1>
+<body class="contact-page">
   <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}

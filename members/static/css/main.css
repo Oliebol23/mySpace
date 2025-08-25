@@ -3,24 +3,33 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
+  
 }
 
+
 body {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
     background-color: #0a0435;
     height: 100vh;
 
 }
-h1, h2, h3{
+p{
+   color: #fff;
+    font-size: 48px;   
+
+}
+h1, h2, h3 {
     color: #fff;
-    font-size: 190px;
+    font-size: 48px;          
     text-transform: uppercase;
     text-align: center;
-    padding-top:  40vh;
-    text-shadow: 0 0 10px rgba(255, 255,255, .35);
-    z-index: 9999;
+    padding-top: 20vh;          
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+    z-index: 10;
+    letter-spacing: 2px;       
+    line-height: 1.2;
 }
+
 #bg{
     position: absolute;
     top: 0;
@@ -48,3 +57,25 @@ h1, h2, h3{
 }
   .btn-glow { box-shadow: 0 0 .8rem rgba(255,255,255,.28), 0 0 2rem rgba(13,110,253,.35); }
 
+body.home-page h1 {
+    font-size: 100px;
+    padding-top: 30vh;
+}
+
+body.contact-page h1 {
+    font-size: 48px;
+    padding-top: 10vh;
+}
+body.about-page h1 {
+    font-size: 48px;
+    padding-top: 10vh;
+}
+
+p {
+  color: #ddd;            
+  font-size: 18px;         
+  line-height: 1.6;         
+  text-align: center;       
+  margin: 1rem auto;       
+  max-width: 600px;         
+}

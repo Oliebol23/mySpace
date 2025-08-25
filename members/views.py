@@ -23,3 +23,7 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, "contact.html", {"form": form})
+
+def about(request):
+    template = loader.get_template('about.html')
+    return HttpResponse(template.render({},request))
