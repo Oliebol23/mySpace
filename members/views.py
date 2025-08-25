@@ -1,44 +1,29 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.http import HttpResponse
 from django.template import loader
-from .models import Member
+from django.shortcuts import render, redirect
+from .forms import ContactForm
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 def home(request):
     template = loader.get_template('home.html')
     return HttpResponse(template.render({},request))
 
-def contact(request):
-    template = loader.get_template('contact.html')
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  #in the db
+            return render(request, "contact_success.html", {"name": form.cleaned_data['name']})
+    else:
+        form = ContactForm()
+
+    return render(request, "contact.html", {"form": form})
+
+def about(request):
+    template = loader.get_template('about.html')
     return HttpResponse(template.render({},request))
-
-    
-def main(request):
-    template = loader.get_template('main.html')
-    return HttpResponse(template.render())
-
-def members(request):
-    mymembers = Member.objects.all().values()
-    template = loader.get_template('all_members.html')
-    context = {
-        'mymembers':mymembers,
-    }
-    return HttpResponse(template.render(context, request))
-
-def details(request, id):
-    mymember = Member.objects.get(id =id)
-    template = loader.get_template('details.html')
-    context = {
-        'mymember': mymember,
-    }
-    return HttpResponse(template.render(context, request))
-
-
-
-
-
-# def deneme():
-#     context = {
-#         'points: 5'
-#     }
