@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Member
+from .models import ContactMessage
+
 # Register your models here.
 class MemberAdmin(admin.ModelAdmin):
-  list_display = ("firstname", "lastname",)
-admin.site.register(Member, MemberAdmin)
+  admin.site.register(ContactMessage)
