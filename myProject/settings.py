@@ -38,7 +38,7 @@ EMAIL_HOST_PASSWORD = env("EMAIL_PASS")  # .env
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
