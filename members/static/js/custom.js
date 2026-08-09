@@ -1,25 +1,25 @@
  /* ---- particles.js config ---- */
 
-particlesJS("bg", {
+particlesJS("bg",{
   "particles": {
     "number": {
-      "value": 190,
+      "value": 191,
       "density": {
-        "enable": true,
-        "value_area": 315
+        "enable": false,
+        "value_area": 0
       }
     },
     "color": {
-      "value": "#ffffff"
+      "value": "#ede1e6"
     },
     "shape": {
-      "type": "circle",
+      "type": "triangle",
       "stroke": {
         "width": 0,
-        "color": "#000000"
+        "color": "#ffffff"
       },
       "polygon": {
-        "nb_sides": 2
+        "nb_sides": 6
       },
       "image": {
         "src": "img/github.svg",
@@ -28,43 +28,43 @@ particlesJS("bg", {
       }
     },
     "opacity": {
-      "value": 0.5,
-      "random": true,
+      "value": 0.3586914934319605,
+      "random": false,
       "anim": {
-        "enable": true,
-        "speed": 0.01,
-        "opacity_min": 0.2,
+        "enable": false,
+        "speed": 0,
+        "opacity_min": 0.1,
         "sync": false
       }
     },
     "size": {
-      "value": 7,
+      "value": 3,
       "random": true,
       "anim": {
-        "enable": true,
-        "speed": 0.1,
-        "size_min": 0.5,
+        "enable": false,
+        "speed": 0,
+        "size_min": 0.1,
         "sync": false
       }
     },
     "line_linked": {
-      "enable": false,
-      "distance": 150,
+      "enable": true,
+      "distance": 345.27406128614604,
       "color": "#ffffff",
       "opacity": 0.4,
       "width": 1
     },
     "move": {
       "enable": true,
-      "speed": 5,
+      "speed": 6,
       "direction": "none",
-      "random": true,
+      "random": false,
       "straight": false,
       "out_mode": "out",
-      "bounce": true,
+      "bounce": false,
       "attract": {
         "enable": false,
-        "rotateX": 1200,
+        "rotateX": 600,
         "rotateY": 1200
       }
     }
@@ -73,8 +73,8 @@ particlesJS("bg", {
     "detect_on": "canvas",
     "events": {
       "onhover": {
-        "enable": true,
-        "mode": "grab"
+        "enable": false,
+        "mode": "repulse"
       },
       "onclick": {
         "enable": true,
@@ -84,7 +84,7 @@ particlesJS("bg", {
     },
     "modes": {
       "grab": {
-        "distance": 140,
+        "distance": 400,
         "line_linked": {
           "opacity": 1
         }
@@ -94,7 +94,7 @@ particlesJS("bg", {
         "size": 40,
         "duration": 2,
         "opacity": 8,
-        "speed": 30
+        "speed": 3
       },
       "repulse": {
         "distance": 200,
@@ -109,7 +109,7 @@ particlesJS("bg", {
     }
   },
   "retina_detect": true
-});
+} );
 
 
 /* ---- stats.js config ---- */
