@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from django.core.management.utils import get_random_secret_key
 import environ
-
 
 
 env = environ.Env()
@@ -26,18 +24,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used i
-# n production secret! #now it comes from the .env  SECRET_KEY = env("DJANGO_SECRET_KEY", default=get_random_secret_key())
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
-
+# Contact-form email notifications. Keep credentials in .env / host environment,
+# never in Git. The contact view only sends when CONTACT_EMAIL and
+# EMAIL_HOST_USER are configured.
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
+EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = env.int("EMAIL_PORT", default=587)
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default=EMAIL_HOST_USER)
+CONTACT_EMAIL = env("CONTACT_EMAIL", default="")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1", ".pythonanywhere.com"])
 
 
 # Application definition
@@ -49,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'members'
+    'members',
 ]
 
 MIDDLEWARE = [
@@ -129,7 +133,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_URL =  'images/'   
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
