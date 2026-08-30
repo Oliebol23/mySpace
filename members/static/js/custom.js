@@ -1,6 +1,4 @@
- /* ---- particles.js config ---- */
-
-particlesJS("bg",{
+particlesJS("bg", {
   "particles": {
     "number": {
       "value": 191,
@@ -20,11 +18,6 @@ particlesJS("bg",{
       },
       "polygon": {
         "nb_sides": 6
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
       }
     },
     "opacity": {
@@ -49,7 +42,7 @@ particlesJS("bg",{
     },
     "line_linked": {
       "enable": true,
-      "distance": 345.27406128614604,
+      "distance": 345,
       "color": "#ffffff",
       "opacity": 0.4,
       "width": 1
@@ -69,6 +62,7 @@ particlesJS("bg",{
       }
     }
   },
+
   "interactivity": {
     "detect_on": "canvas",
     "events": {
@@ -108,39 +102,6 @@ particlesJS("bg",{
       }
     }
   },
+
   "retina_detect": true
-} );
-
-
-/* ---- stats.js config ---- */
-
-var count_particles, stats, update;
-stats = new Stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
-count_particles = document.querySelector('.js-count-particles');
-update = function() {
-  stats.begin();
-  stats.end();
-  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-  }
-  requestAnimationFrame(update);
-};
-requestAnimationFrame(update);
-let lastY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const dy = window.scrollY - lastY;     // anlık scroll farkı
-    lastY = window.scrollY;
-    const base = 1.2;                      // temel hız (config’deki speed ile aynı)
-    const boost = Math.min(2.5, Math.max(-2.5, Math.abs(dy) / 20));
-    const p = pJSDom[0].pJS;
-    p.particles.move.speed = base + boost; // anlık hız
-  }, { passive: true });
-
-  
-  const buttonacc = document.getElementsByClassName('accordion-button')
-  buttonacc.addEventListener("click", ToggleEvent);
+});
