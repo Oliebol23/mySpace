@@ -1,0 +1,21 @@
+# Environment / secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+
+# Editor temporary files
+*.swp
+
+# Django generated static output
+/static/
+/staticfiles/
+
+# Local SQLite database
+db.sqlite3
