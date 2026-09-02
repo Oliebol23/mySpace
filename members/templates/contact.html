@@ -16,11 +16,18 @@
   <form class="contact-form" method="post" novalidate>
     {% csrf_token %}
 
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+      {% if hidden_field.errors %}
+        <div class="form-errors">{{ hidden_field.errors }}</div>
+      {% endif %}
+    {% endfor %}
+
     {% if form.non_field_errors %}
       <div class="form-errors">{{ form.non_field_errors }}</div>
     {% endif %}
 
-    {% for field in form %}
+    {% for field in form.visible_fields %}
       <div class="field-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {{ field }}
@@ -31,7 +38,7 @@
     {% endfor %}
 
     <button class="button button-primary submit-button" type="submit">Send transmission →</button>
-    <p class="form-note">Your message is stored securely in the site's contact inbox.</p>
+    <p class="form-note">Your message goes to the site's private contact inbox and email notification.</p>
   </form>
 </section>
 {% endblock %}
