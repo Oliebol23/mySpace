@@ -1,69 +1,44 @@
- {% load static %}
+{% extends "base.html" %}
 
+{% block title %}Contact — My Space{% endblock %}
+{% block body_class %}contact-page{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% block content %}
+<section class="page-shell contact-shell">
+  <div class="contact-copy">
+    <p class="eyebrow">02 / CONTACT</p>
+    <h1>Transmit a message.</h1>
+    <p class="page-intro">
+      Have an idea, question, project, or just want to say hi? Send it through the form.
+    </p>
+  </div>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;  
-      align-items: center;      
-      background-color: #0a0435;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    form {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      color: white;
-      width: 100%;
-      max-width: 400px;  
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.6rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 6px;
-    }
-
-    button {
-      width: 100%;
-      padding: 0.8rem;
-      background: #4e6ef2;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #364dc7;
-    }
-  </style>
-</head>
-<body class="contact-page">
-  <form method="post" action="">
+  <form class="contact-form" method="post" novalidate>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send</button>
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+      {% if hidden_field.errors %}
+        <div class="form-errors">{{ hidden_field.errors }}</div>
+      {% endif %}
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+      <div class="form-errors">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    {% for field in form.visible_fields %}
+      <div class="field-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          <div class="field-errors">{{ field.errors }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button class="button button-primary submit-button" type="submit">Send transmission →</button>
+    <p class="form-note">Your message goes to the site's private contact inbox and email notification.</p>
   </form>
-</body>
-</html>
+</section>
+{% endblock %}
