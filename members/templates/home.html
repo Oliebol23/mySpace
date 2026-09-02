@@ -12,9 +12,13 @@
     <h1>Welcome to<br>my space.</h1>
     <p class="hero-copy">Computer science, curious experiments, and things I build.</p>
 
-    <div class="hero-actions">
-      <a href="{% url 'about' %}" class="button button-primary">Explore my orbit</a>
-      <a href="{% url 'contact' %}" class="button button-ghost">Transmit a message</a>
+    <div class="hero-actions" aria-label="Main actions">
+      <a href="{% url 'about' %}" class="button button-primary">
+        <span>About me</span><span class="button-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="{% url 'contact' %}" class="button button-secondary">
+        <span>Contact me</span><span class="button-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
 
     <div class="hero-status" aria-label="Site status">

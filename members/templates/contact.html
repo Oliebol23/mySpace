@@ -7,9 +7,9 @@
 <section class="page-shell contact-shell">
   <div class="contact-copy">
     <p class="eyebrow">02 / CONTACT</p>
-    <h1>Transmit a message.</h1>
+    <h1>Contact me.</h1>
     <p class="page-intro">
-      Have an idea, question, project, or just want to say hi? Send it through the form.
+      Have an idea, question, project, or just want to say hi? Send me a message.
     </p>
   </div>
 
@@ -27,18 +27,22 @@
       <div class="form-errors">{{ form.non_field_errors }}</div>
     {% endif %}
 
-    {% for field in form.visible_fields %}
-      <div class="field-group">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {% if field.errors %}
-          <div class="field-errors">{{ field.errors }}</div>
-        {% endif %}
-      </div>
-    {% endfor %}
+    <div class="form-fields">
+      {% for field in form.visible_fields %}
+        <div class="field-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="field-errors">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
 
-    <button class="button button-primary submit-button" type="submit">Send transmission →</button>
-    <p class="form-note">Your message goes to the site's private contact inbox and email notification.</p>
+    <button class="button button-primary submit-button" type="submit">
+      <span>Send message</span><span class="button-arrow" aria-hidden="true">→</span>
+    </button>
+    <p class="form-note">I’ll receive your message privately by email.</p>
   </form>
 </section>
 {% endblock %}
